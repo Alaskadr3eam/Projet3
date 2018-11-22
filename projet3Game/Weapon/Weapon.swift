@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+//mother class with init for each weapon type
 class Weapon {
     var dp: Int
     init(dp : Int) {
