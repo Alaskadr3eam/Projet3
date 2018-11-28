@@ -10,5 +10,6 @@ import Foundation
 
 //enumeration of different types of characters
 enum TypesCharacters {
-    case Fighter, Magus, Colossus, Dwarf
+    case Fighter, Magus, Giant, Dwarf
 }
+

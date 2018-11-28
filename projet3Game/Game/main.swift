@@ -51,12 +51,16 @@ repeat{
 }
 */
 
-Game.startGame()
+Game.startGame1()
+//jeux team1 contre team2
 
 
-    
 
-func recevoir(degats: Int) {
+
+//jeux team2 contre team1
+
+
+/*func recevoir(degats: Int) {
     team1.myCharac[0].life = team1.myCharac[0].life - degats
     
     if team1.myCharac[0].life < 0 {
@@ -67,3 +71,4 @@ func recevoir(degats: Int) {
 func attaquer() {
     personnage.recevoir(degats: team1.myCharac[0].weapon.dp)
 }
+*/

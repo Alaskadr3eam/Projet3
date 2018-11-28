@@ -105,7 +105,7 @@ class Team {
     func descriptionCharac1() {
         if myCharac[0].life > 0 {
         print("")
-        print("Le perso \(myCharac[0].name) de type \(myCharac[0].type) à \(myCharac[0].life) de vie et fait \(myCharac[0].weapon.dp) de dégat ")
+        print("1.Le perso \(myCharac[0].name) de type \(myCharac[0].type) à \(myCharac[0].life) de vie et fait \(myCharac[0].weapon.dp) de dégat ")
         } else {
             print("personnage est DEAD!")
         }
@@ -113,12 +113,12 @@ class Team {
     
     func descriptionCharac2() {
         print("")
-        print("Le perso \(myCharac[1].name) de type \(myCharac[1].type) à \(myCharac[1].life) de vie et fait \(myCharac[1].weapon.dp) de dégat ")
+        print("2.Le perso \(myCharac[1].name) de type \(myCharac[1].type) à \(myCharac[1].life) de vie et fait \(myCharac[1].weapon.dp) de dégat ")
     }
     
     func descriptionCharac3() {
         print("")
-        print("Le perso \(myCharac[2].name) de type \(myCharac[2].type) à \(myCharac[2].life) de vie et fait \(myCharac[2].weapon.dp) de dégat ")
+        print("3.Le perso \(myCharac[2].name) de type \(myCharac[2].type) à \(myCharac[2].life) de vie et fait \(myCharac[2].weapon.dp) de dégat ")
     }
 
     
@@ -410,8 +410,118 @@ class Team {
         // print("Le personnage \(attacked.name) de type \(attacked.type) à maintenant \(attacked.life) de vie.")
     }
  */
+    func jouer1() {
+        
+        team1.teamChooseCharA()
+        
+        if teamChooseCharA().type == .Magus {
+            
+            team1.teamChooseCharH()
+            
+            teamChooseCharA().care(characters: teamChooseCharH())
+            self.myCharac[0] = teamChooseCharH()
+            
+        } else {
+           
+            team2.teamchooseCharD()
+           
+            teamChooseCharA().attack(characters: teamchooseCharD())
+            
+            self.myCharac[0] = teamchooseCharD()
+        }
+    }
 
 
-
+    func teamchooseCharD() -> Characters { //func chooseCharAttacked() -> Characters {
+        var attacked = myCharac[0]
+        
+        print("Choisie un des personnages adversaire à attaquer :")
+        
+        descriptionTeam()
+        
+        var choice1 = ""
+        repeat {
+            if let str = readLine() {
+                choice1 = str
+            }
+        } while choice1 != "1" && choice1 != "2" && choice1 != "3"
+        
+        switch choice1 {
+        case "1":
+            if myCharac[0].life == 0 {
+                print("Choississez un autre personnage à attaquer, celui la est DEAD!")
+            } else {
+                attacked = myCharac[0]
+            }
+        case "2":
+            attacked = myCharac[1]
+        case "3":
+            attacked = myCharac[2]
+        default: break
+        }
+        print("\(attacked.type) \(attacked.name) \(attacked.life) ")
+        return attacked
+    }
+    
+    func teamChooseCharH() -> Characters{
+        var charToHeal = myCharac[0]
+        print("\(self.nameTeam) choisie un de tes personnages à soigner :")
+        
+        self.descriptionTeam()
+        
+        var choice = ""
+        repeat {
+            if let str = readLine() {
+                choice = str
+            }
+        } while choice != "1" && choice != "2" && choice != "3"
+        
+        switch choice {
+        case "1":
+            if self.myCharac[0].life == 0 {
+                print("Choississez un autre personnage pour attaquer celui la est DEAD!")
+            } else {
+                charToHeal = self.myCharac[0]
+            }
+        case "2":
+            charToHeal = self.myCharac[1]
+        case "3":
+            charToHeal = self.myCharac[2]
+        default: break
+        }
+        return charToHeal
+    }
+    
+    func teamChooseCharA() -> Characters {
+        var attacker = self.myCharac[0]
+        
+        print("\(self.nameTeam) choisie un de tes personnages pour attaquer :")
+        
+        self.descriptionTeam()
+        
+        var choice = ""
+        repeat {
+            if let str = readLine() {
+                choice = str
+            }
+        } while choice != "1" && choice != "2" && choice != "3"
+        
+        switch choice {
+        case "1":
+            if self.myCharac[0].life == 0 {
+                print("Choississez un autre personnage pour attaquer celui la est DEAD!")
+            } else {
+                attacker = self.myCharac[0]
+            }
+        case "2":
+            attacker = self.myCharac[1]
+        case "3":
+            attacker = self.myCharac[2]
+        default: break
+        }
+        // descripion personnage choisi pour attaquer.
+        print("Vous avez choisi \(attacker.name) \(attacker.type)  \(attacker.life) \(attacker.weapon.dp)")
+        return attacker
+    }
     
 }
