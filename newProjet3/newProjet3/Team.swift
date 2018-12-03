@@ -116,7 +116,7 @@ class Team {
             
             player = team.choiceInTeam()
             if player.life > 0 {
-                print("Vous avez choisi \(player.name) de tupe \(player.type) qui a \(player.life) de vie")
+                print("Vous avez choisi \(player.name) de type \(player.type) qui a \(player.life) de vie")
                 
             } else {
                 print("Choix impossible")
@@ -124,5 +124,8 @@ class Team {
         } while player.life == 0
         return player
     }
+    
+  
+   
 
 }

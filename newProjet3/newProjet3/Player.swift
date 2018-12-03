@@ -123,5 +123,37 @@ class Player: Character {
         print("Le personnage \(player.name) de type \(player.type) a été soigné, il a maintenant \(player.life) de vie.")
     }
     
+    func chest(player: Player) -> Player {
+        print("Un coffre apparait, voulez vous l'ouvrir ?"
+        + "\n1. Oui                     2.Non")
+        var choice = readLine()
+        switch choice {
+        case "1":
+            print("Vous trouvez une arme légendaire dans ce coffre, votre personnage s'en équipe")
+            player.weapon = LegendaryWeapon()
+            
+        case "2":
+            print("tant pis pour vous !")
+        default: break
+        }
+        return player
+    }
+    
+    func nil1(player: Player) -> Player{
+        var player = player
+        return player
+    }
+    
+    func nil2(player: Player)-> Player{
+        var player = player
+        return player
+    }
+    
+    
+    func randomFunc(player: Player) -> Player {
+        let randomFunc = [self.chest(player: player), self.nil1(player: player), self.nil2(player: player)] as [Any]
+        var player = Int(arc4random_uniform(UInt32(randomFunc.count)))
+        return randomFunc[player] as! Player
+    }
     
 }

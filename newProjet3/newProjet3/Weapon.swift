@@ -13,4 +13,7 @@ class Weapon {
     init(dp : Int) {
         self.dp = dp
     }
+    
+
+    
 }

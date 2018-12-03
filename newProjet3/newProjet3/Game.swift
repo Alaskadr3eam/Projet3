@@ -50,7 +50,9 @@ class Game {
 // function play team1
 static func jouer() {
         
-       let attacker = Team.chooseCharAttack(team: team1)
+       var attacker = Team.chooseCharAttack(team: team1)
+    
+    attacker.randomFunc(player: attacker)
         if attacker.type == .Magus {
             let charToHeal = Team.chooseCharToHeal(team: team1)
             attacker.care(player: charToHeal)
@@ -94,5 +96,7 @@ static func playGame() {
         } while team1.isDead() != 0 && team2.isDead() != 0
     }
     
+    
 }
+
 
