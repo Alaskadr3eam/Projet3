@@ -19,6 +19,7 @@
 		31606B3E21B0154400B10BC3 /* Scepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31606B3D21B0154400B10BC3 /* Scepter.swift */; };
 		31606B4021B0256900B10BC3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31606B3F21B0256900B10BC3 /* Game.swift */; };
 		31606B4221B54B3B00B10BC3 /* LegendaryWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31606B4121B54B3B00B10BC3 /* LegendaryWeapon.swift */; };
+		31606B4421B66D1500B10BC3 /* LegendarySceptre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31606B4321B66D1500B10BC3 /* LegendarySceptre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +48,7 @@
 		31606B3D21B0154400B10BC3 /* Scepter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scepter.swift; sourceTree = "<group>"; };
 		31606B3F21B0256900B10BC3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		31606B4121B54B3B00B10BC3 /* LegendaryWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendaryWeapon.swift; sourceTree = "<group>"; };
+		31606B4321B66D1500B10BC3 /* LegendarySceptre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendarySceptre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				31606B2F21B014E000B10BC3 /* Character.swift */,
 				31606B3121B014FF00B10BC3 /* CharacterType.swift */,
 				31606B3321B0150C00B10BC3 /* Player.swift */,
+				31606B4321B66D1500B10BC3 /* LegendarySceptre.swift */,
 				31606B3521B0152100B10BC3 /* Weapon.swift */,
 				31606B4121B54B3B00B10BC3 /* LegendaryWeapon.swift */,
 				31606B3721B0152900B10BC3 /* Ax.swift */,
@@ -162,6 +165,7 @@
 				31606B3421B0150C00B10BC3 /* Player.swift in Sources */,
 				31606B2721B014C000B10BC3 /* main.swift in Sources */,
 				31606B4221B54B3B00B10BC3 /* LegendaryWeapon.swift in Sources */,
+				31606B4421B66D1500B10BC3 /* LegendarySceptre.swift in Sources */,
 				31606B3621B0152100B10BC3 /* Weapon.swift in Sources */,
 				31606B3C21B0153900B10BC3 /* Blade.swift in Sources */,
 			);

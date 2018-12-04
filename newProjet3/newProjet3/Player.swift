@@ -13,6 +13,7 @@ class Player: Character {
     var type: CharacterType
     var weapon: Weapon
     var life: Int
+    var status: String
     static var myCharacName = [String]()
 
     init(type: CharacterType) {
@@ -23,15 +24,19 @@ class Player: Character {
         case .Magus:
             self.weapon = Scepter()
             self.life = 90
+            self.status = ""
         case .Fighter:
             self.weapon = Blade()
             self.life = 100
+            self.status = ""
         case .Giant:
             self.weapon = Hammer()
             self.life = 130
+            self.status = ""
         case .Dwarf:
             self.weapon = Ax()
             self.life = 70
+            self.status = ""
             
         }
     }
@@ -99,12 +104,8 @@ class Player: Character {
     func attack(player: Player) {
         player.receive(degat: self.weapon.dp)
         print("")
-        if player.isDead(player: player) == true {
-            print("")
-        } else {
         print("Le personnage \(player.name) de type \(player.type) a maintenant \(player.life) de vie.")
         }
-    }
     // function to check if player is dead
     func isDead(player: Player) -> Bool{
         if player.life == 0 {
@@ -123,37 +124,34 @@ class Player: Character {
         print("Le personnage \(player.name) de type \(player.type) a été soigné, il a maintenant \(player.life) de vie.")
     }
     
-    func chest(player: Player) -> Player {
+    func chest(player: Player) {
         print("Un coffre apparait, voulez vous l'ouvrir ?"
         + "\n1. Oui                     2.Non")
-        var choice = readLine()
+        let choice = readLine()
         switch choice {
         case "1":
             print("Vous trouvez une arme légendaire dans ce coffre, votre personnage s'en équipe")
+            if player.type == .Magus {
+                player.weapon = LegendarySceptre()
+            } else {
             player.weapon = LegendaryWeapon()
-            
+            }
         case "2":
             print("tant pis pour vous !")
         default: break
         }
-        return player
+        
     }
     
-    func nil1(player: Player) -> Player{
-        var player = player
+    func appiritionChest(player: Player) -> Player {
+        
+        let choice = Int(arc4random_uniform(UInt32(5 - 1) + UInt32(1)))
+        switch choice {
+        case 1 :
+            player.chest(player: player)
+        default : break
+        }
         return player
-    }
-    
-    func nil2(player: Player)-> Player{
-        var player = player
-        return player
-    }
-    
-    
-    func randomFunc(player: Player) -> Player {
-        let randomFunc = [self.chest(player: player), self.nil1(player: player), self.nil2(player: player)] as [Any]
-        var player = Int(arc4random_uniform(UInt32(randomFunc.count)))
-        return randomFunc[player] as! Player
     }
     
 }

@@ -11,7 +11,7 @@ import Foundation
 class Game {
     
     static func startGame() {
-        
+        //var compteur = 0
         var choice = ""
         print("Bonjour")
         
@@ -25,6 +25,7 @@ class Game {
         
         switch choice {
         case "1":
+            
             Team.createTeam(team: team1)
             Team.createTeam(team: team2)
             
@@ -34,7 +35,7 @@ class Game {
             
             
             
-            Game.playGame()
+            compteur = Game.playGame()
            
             
             Game.gameWinner()
@@ -52,7 +53,7 @@ static func jouer() {
         
        var attacker = Team.chooseCharAttack(team: team1)
     
-    attacker.randomFunc(player: attacker)
+    attacker = attacker.appiritionChest(player: attacker)
         if attacker.type == .Magus {
             let charToHeal = Team.chooseCharToHeal(team: team1)
             attacker.care(player: charToHeal)
@@ -64,7 +65,8 @@ static func jouer() {
     }
  // function play team 2
 static func jouer2() {
-        let attacker = Team.chooseCharAttack(team: team2)
+        var attacker = Team.chooseCharAttack(team: team2)
+    attacker = attacker.appiritionChest(player: attacker)
         if attacker.type == .Magus {
             let charToHeal = Team.chooseCharToHeal(team: team2)
             attacker.care(player: charToHeal)
@@ -82,20 +84,24 @@ static func gameWinner() {
         } else {
             winnerName = team2.nameTeam
         }
-        print("Félicitation, le vainqueur est " + winnerName + "!")
+        print("")
+        print("Félicitation, le vainqueur est " + winnerName + "!"
+    + "\n vous avez gagner en \(compteur) attaques")
     }
 // func for the game
-static func playGame() {
+static func playGame() -> Int {
+    var compteur = 0
         repeat{
             
             Game.jouer()
             if team2.isDead() != 0 {
                 Game.jouer2()
+              
             }
-            
+            compteur += 1
         } while team1.isDead() != 0 && team2.isDead() != 0
+    return compteur
     }
-    
     
 }
 
