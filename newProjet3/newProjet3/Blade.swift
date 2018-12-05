@@ -10,6 +10,6 @@ import Foundation
 
 class Blade: Weapon {
     init() {
-        super.init(dp: 150)
+        super.init(dp: 10)
     }
 }
