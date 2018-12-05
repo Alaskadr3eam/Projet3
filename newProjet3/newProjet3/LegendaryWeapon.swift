@@ -10,7 +10,6 @@ import Foundation
 
 class LegendaryWeapon: Weapon {
     
-    
         init() {
            
             super.init(dp: Int(arc4random_uniform(UInt32(200 - 20)) + UInt32(20)))

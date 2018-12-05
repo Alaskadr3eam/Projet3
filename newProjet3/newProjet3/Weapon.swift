@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Weapon {
-    var dp: Int
+class Weapon { // class mom for the weapons
+    var dp: Int // dp is degat point
     init(dp : Int) {
         self.dp = dp
     }

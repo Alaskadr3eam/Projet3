@@ -9,31 +9,35 @@
 import Foundation
 
 class Team {
-    var nameTeam = ""
+    var nameTeam = ""     //name team
     var player1: Player?
     var player2: Player?
     var player3: Player?
     
-    
+// function for create team
   static func createTeam(team: Team) {
         print("")
         print("Nom de l'équipe ?")
         team.nameTeam = readLine()!
         repeat{
+            print("")
+            print("Personnage 1:")
             team.player1 = Player.createPlayer()
+            print("Personnage 2:")
             team.player2 = Player.createPlayer()
+            print("Personnage 3:")
             team.player3 = Player.createPlayer()
             
         } while team.isTeamFull() == false
     }
-    // function for chek if full team
+// function for chek if full team
     func isTeamFull() -> Bool {
         if player1 != nil && player2 != nil && player3 != nil {
             print("Equipe pleine")
         }
         return true
     }
-    // function for check if team is Dead
+// function for check if team is Dead
     func isDead() -> Int {
         let teamLife = player1!.life + player2!.life + player3!.life
         if teamLife == 0 {
@@ -41,13 +45,12 @@ class Team {
         }
         return teamLife
     }
-  // description player
+// description player
     func description(player: Player) {
         if  player.life == 0 {
             print("Ce personnage est MORT.")
-            //player? = nil
         } else {
-            print("Le perso de type \(player.name) de classe \(player.type) à \(player.life) de vie et fait \(player.weapon.dp) de dégat ")
+            print("Le perso de type \(player.name) de classe \(player.type) à \(player.life) de vie et fait \(player.weapon.dp) de dégat. \(player.status)")
         }
     }
 //description team, and players team
@@ -55,8 +58,7 @@ class Team {
         print("")
         print(team.nameTeam)
         print("")
-        print("1")
-            team.description(player: team.player1!)
+        print("1");team.description(player: team.player1!)
         print("2");team.description(player: team.player2!)
         print("3");team.description(player: team.player3!)
     }
@@ -65,7 +67,7 @@ class Team {
         var player: Player
         print("")
         print(" Choisie un des personnages adversaire à attaquer :")
-        player = choiceCharac(team: team)
+        player = choiceCharacD(team: team)
         return player
     }
 //choose player for attack or treat
@@ -73,18 +75,18 @@ class Team {
         var player: Player
         print("")
         print("\(team.nameTeam) choisie un de tes personnages pour attaquer :")
-        player = choiceCharac(team: team)
+        player = choiceCharacA(team: team)
         return player
     }
  //choose player for receive care
     static func chooseCharToHeal(team: Team) -> Player{
         var player: Player
          print("Choisie un de tes personnages à soigner")
-        player = choiceCharac(team: team)
+        player = choiceCharacD(team: team)
         return player
     }
-//func for choice user
-    func choiceInTeam() -> Player{//-> String {
+//func for choice player in the team
+    func choiceInTeam() -> Player{
         var choice = ""
         var player: Player?
         
@@ -106,26 +108,36 @@ class Team {
         }
         return player!
     }
-    
-  static func choiceCharac(team: Team) -> Player{
+// function to choose the character that will be attacked
+    static func choiceCharacD(team: Team) -> Player {
         var player: Player
         repeat {
-           
-            
             self.descriptionTeam(team: team)
-            
             player = team.choiceInTeam()
-            if player.life > 0 {
-                print("Vous avez choisi \(player.name) de type \(player.type) qui a \(player.life) de vie")
-                
+            if player.life > 0  {
+                print("Vous avez choisi \(player.name) de type \(player.type) qui a \(player.life) de vie de status : \(player.status)")
             } else {
                 print("Choix impossible")
             }
         } while player.life == 0
         return player
     }
-    
-  
-   
+// function to choose the player for attack
+   static func choiceCharacA(team: Team) -> Player{
+        var player: Player
+        repeat {
+            self.descriptionTeam(team: team)
+            player = team.choiceInTeam()
+            if player.life > 0 && player.status == "Normal"  {
+                print("Vous avez choisi \(player.name) de type \(player.type) qui a \(player.life) de vie")
+            } else if player.status == "PEUR" {
+                print("Vous ne pouvez pas sélectionner ce personage car il est effrayé")
+            } else {
+                print("Choix impossible")
+            }
+        } while player.life == 0 || player.status == "PEUR"
+        return player
+    }
+
 
 }

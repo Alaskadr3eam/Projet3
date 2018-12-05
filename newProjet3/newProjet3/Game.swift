@@ -9,9 +9,9 @@
 import Foundation
 
 class Game {
-    
+    // funcion startGame for launch the game in the main
     static func startGame() {
-        //var compteur = 0
+        //var counter: Int
         var choice = ""
         print("Bonjour")
         
@@ -25,8 +25,11 @@ class Game {
         
         switch choice {
         case "1":
-            
+            print("")
+            print("Creation équipe 1:")
             Team.createTeam(team: team1)
+            print("")
+            print("Creation équipe 2:")
             Team.createTeam(team: team2)
             
             Team.descriptionTeam(team: team1)
@@ -35,7 +38,7 @@ class Game {
             
             
             
-            compteur = Game.playGame()
+            counter = Game.playGame()
            
             
             Game.gameWinner()
@@ -49,32 +52,26 @@ class Game {
         }
     }
 // function play team1
-static func jouer() {
-        
+static func team1Play() {
        var attacker = Team.chooseCharAttack(team: team1)
-    
     attacker = attacker.appiritionChest(player: attacker)
         if attacker.type == .Magus {
-            let charToHeal = Team.chooseCharToHeal(team: team1)
-            attacker.care(player: charToHeal)
+            attacker.choiceMagusAttack(player: attacker)
         } else {
-            let attacked = Team.chooseCharDefence(team: team2)
-            attacker.attack(player: attacked)
+            let playerScared = Team.chooseCharDefence(team: team2)
+            attacker.affraid(player: playerScared)
         }
-    
     }
- // function play team 2
-static func jouer2() {
+// function play team2
+    static func team2Play() {
         var attacker = Team.chooseCharAttack(team: team2)
-    attacker = attacker.appiritionChest(player: attacker)
+        attacker = attacker.appiritionChest(player: attacker)
         if attacker.type == .Magus {
-            let charToHeal = Team.chooseCharToHeal(team: team2)
-            attacker.care(player: charToHeal)
+            attacker.choiceMagusAttack(player: attacker)
         } else {
             let attacked = Team.chooseCharDefence(team: team1)
             attacker.attack(player: attacked)
         }
-    
     }
 // func winner
 static func gameWinner() {
@@ -86,23 +83,24 @@ static func gameWinner() {
         }
         print("")
         print("Félicitation, le vainqueur est " + winnerName + "!"
-    + "\n vous avez gagner en \(compteur) attaques")
+    + "\n vous avez gagner en \(counter) attaques")
     }
-// func for the game
+// func for the game, defense-attack phase
 static func playGame() -> Int {
-    var compteur = 0
+    var counter = 0 // counter to find out how much lap the winning team has won
         repeat{
             
-            Game.jouer()
+            Game.team1Play()
             if team2.isDead() != 0 {
-                Game.jouer2()
+                Game.team2Play()
               
             }
-            compteur += 1
+            counter += 1
         } while team1.isDead() != 0 && team2.isDead() != 0
-    return compteur
+    return counter
     }
     
+   
 }
 
 

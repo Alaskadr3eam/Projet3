@@ -121,7 +121,6 @@ class Team {
         print("3.Le perso \(myCharac[2].name) de type \(myCharac[2].type) à \(myCharac[2].life) de vie et fait \(myCharac[2].weapon.dp) de dégat ")
     }
 
-    
     func chooseCharAttack1() {
        var attacker = myCharac[0]
         
@@ -412,22 +411,22 @@ class Team {
  */
     func jouer1() {
         
-        team1.teamChooseCharA()
+        let attacker = team1.teamChooseCharA()
         
         if teamChooseCharA().type == .Magus {
             
-            team1.teamChooseCharH()
+           let charToHeal = team1.teamChooseCharH()
             
-            teamChooseCharA().care(characters: teamChooseCharH())
-            self.myCharac[0] = teamChooseCharH()
+            attacker.care(characters:charToHeal)
+            self.myCharac[0] = charToHeal
             
         } else {
            
-            team2.teamchooseCharD()
+            let attacked = team2.teamchooseCharD()
            
-            teamChooseCharA().attack(characters: teamchooseCharD())
+            attacker.attack(characters: attacked)
             
-            self.myCharac[0] = teamchooseCharD()
+            team2.myCharac[0] = attacked
         }
     }
 

@@ -13,5 +13,5 @@ class Ax: Weapon {
         super.init(dp: 25)
     }
 }
-var ax = Ax()
+
 
