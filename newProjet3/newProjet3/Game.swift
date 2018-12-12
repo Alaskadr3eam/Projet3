@@ -54,7 +54,8 @@ class Game {
         case "2":
             print("Au revoir, à bientot")
         case "3":
-            print("C'est un jeu de match à mort. 2 équipes composé de 3 personnages s'affrontent jusqu'a ce que tout les personnages d'une des deux équipes n'ai plus de vie.")
+            print("C'est un jeu de match à mort. 2 équipes composé de 3 personnages s'affrontent jusqu'a ce que tout les personnages d'une des deux équipes n'ai plus de vie."
+                + "\nDes armes légendaires apparaissent dans le jeu, attenion, toute fois ça peut etre à double tranchant.")
             Game.choiceGame()
         default:
             print("Je ne comprends pas !")

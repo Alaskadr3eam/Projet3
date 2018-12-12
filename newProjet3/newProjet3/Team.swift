@@ -65,7 +65,7 @@ class Team {
     func chooseCharDefence() -> Player {
         var player: Player
         print("")
-        print(" Choisie un des personnages adversaire à attaquer :")
+        print("=> Choisie un des personnages adversaire à attaquer :")
         player = self.choiceCharacD()
         return player
     }
@@ -113,8 +113,8 @@ class Team {
         repeat {
             self.descriptionTeam()
             player = self.choiceInTeam()
-            if player.life > 0  {
-                print("Vous avez choisi \(player.name) de type \(player.type) qui a \(player.life) de vie de status : \(player.status)")
+           if player.life > 0  {
+                print("Vous avez choisi \(player.name) de type \(player.type) qui a \(player.life) de vie de status : \(player.statut)")
             } else {
                 print("Choix impossible")
             }
@@ -127,22 +127,23 @@ class Team {
         repeat {
             self.descriptionTeam()
             player = self.choiceInTeam()
-            if player.life > 0 && player.status == "Normal"  {
+            if player.life > 0 && player.statut == "Normal"  {
                 print("Vous avez choisi \(player.name) de type \(player.type) qui a \(player.life) de vie")
-            } else if player.status == "PEUR" {
+            } else if player.statut == "PEUR" {
                 print("Vous ne pouvez pas sélectionner ce personage car il est effrayé")
             } else {
                 print("Choix impossible")
             }
-        } while player.life == 0 || player.status == "PEUR"
+        } while player.life == 0 || player.statut == "PEUR"
         return player
     }
 
     func guerrissonStatusPlayer() {
         
-        self.player1!.guerrisonStatusPlayer1()
-        self.player2!.guerrisonStatusPlayer1()
-        self.player3!.guerrisonStatusPlayer1()
+        self.player1!.guerrisonStatusPlayer()
+        self.player2!.guerrisonStatusPlayer()
+        self.player3!.guerrisonStatusPlayer()
     }
     
 }
+

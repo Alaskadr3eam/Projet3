@@ -13,7 +13,7 @@ class Player: Character {
     var type: CharacterType // type player(mage, nain, figter ...)
     var weapon: Weapon      // weapon type associed on the player type
     var life: Int           // life associed on the player type
-    var status = "Normal"   // mental state of the player
+    var statut = "Normal"   // mental state of the player
     static var myCharacName = [String]()
 
     init(type: CharacterType) {
@@ -91,9 +91,9 @@ class Player: Character {
      if self.life == 0 {
      print("Ce personnage est MORT.")
      } else if self.type == .Magus{
-        print("\(self.name) de type \(self.type) à \(self.life) de vie, un pouvoir de soin de \(self.weapon.dp) et un pouvoir mental qui est la PEUR. \(self.status)")
+        print("\(self.name) de type \(self.type) à \(self.life) de vie, un pouvoir de soin de \(self.weapon.dp) et un pouvoir mental qui est la PEUR. \(self.statut)")
      } else {
-        print("\(self.name) de type \(self.type) à \(self.life) de vie et fait \(self.weapon.dp) de dégat. \(self.status)")
+        print("\(self.name) de type \(self.type) à \(self.life) de vie et fait \(self.weapon.dp) de dégat. \(self.statut)")
      }
     }
 // function receive degat
@@ -132,32 +132,32 @@ class Player: Character {
             + "\n======================================================================================")
         } else {
             player.receiveCare(care: self.weapon.dp)
-            player.status = "Normal"
+            player.statut = "Normal"
             print("")
             print("================================")
-            print("Le personnage \(player.name) de type \(player.type) a été soigné, il a maintenant \(player.life) de vie et son état est \(player.status).")
+            print("Le personnage \(player.name) de type \(player.type) a été soigné, il a maintenant \(player.life) de vie et son état est \(player.statut).")
             print("================================")
         }
     }
 // function care of status
     func careStatus(player: Player) {
-        player.status = "Normal"
+        player.statut = "Normal"
         print("")
         print("================================")
-        print("Le personnage \(player.name) de type \(player.type) a été soigné, son status est maintenant \(player.status).")
+        print("Le personnage \(player.name) de type \(player.type) a été soigné, son status est maintenant \(player.statut).")
         print("================================")
     }
 // function scared, player scared not playing
     func isScared(affraid: String) {
-        self.status = "PEUR"
+        self.statut = "PEUR"
     }
 //function affraid player
     func affraid(player: Player) {
-        player.isScared(affraid: self.status)
+        player.isScared(affraid: self.statut)
         print("")
         print("=======================================================")
         print("Le mage \(self.name) effraie le \(player.type) \(player.name),"
-            + "\n\(player.name) a changé de status, maintenant il est paralysé par la \(player.status)"
+            + "\n\(player.name) a changé de status, maintenant il est paralysé par la \(player.statut)"
             + "\n=============================================================================")
     }
 // function of the chest that one opens or not, and different for the mage and the combatants
@@ -234,21 +234,9 @@ class Player: Character {
         }
     }
     
-    func guerrisonStatus() {
-        if counter%2 == 0 {
-            self.status = self.status == "Peur" ? "Normal" : "Normal"
-        }
-    }
-  /*  func guerrisonStatusPlayer() {
-        
-        self.status = counter%3 == 0 && self.status == "Peur" ? "Normal" : self.status = self.status
-        
-    }*/
-    
-    func guerrisonStatusPlayer1() {
-        
-        if (counter%3 == 0 && self.status == "PEUR") {
-            self.status = "Normal"
+    func guerrisonStatusPlayer() {
+        if (counter%3 == 0 && self.statut == "PEUR") {
+            self.statut = "Normal"
         }
     }
 }

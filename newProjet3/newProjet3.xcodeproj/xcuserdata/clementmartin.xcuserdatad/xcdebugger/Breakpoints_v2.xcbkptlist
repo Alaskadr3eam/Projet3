@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "newProjet3/Player.swift"
-            timestampString = "566303754.475047"
+            timestampString = "566314713.524677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "guerrisonStatusPlayer1()"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "guerrisonStatusPlayer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
