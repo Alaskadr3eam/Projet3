@@ -73,14 +73,14 @@ class Team {
     func chooseCharAttack() -> Player {
         var player: Player
         print("")
-        print("\(self.nameTeam) choisie un de tes personnages pour attaquer :")
+        print(" => \(self.nameTeam) choisie un de tes personnages pour attaquer :")
         player = self.choiceCharacA()
         return player
     }
  //choose player for receive care
    func chooseCharToHeal() -> Player{
         var player: Player
-         print("Choisie un de tes personnages à soigner")
+         print(" => Choisie un de tes personnages à soigner")
         player = self.choiceCharacD()
         return player
     }
@@ -138,5 +138,11 @@ class Team {
         return player
     }
 
-
+    func guerrissonStatusPlayer() {
+        
+        self.player1!.guerrisonStatusPlayer1()
+        self.player2!.guerrisonStatusPlayer1()
+        self.player3!.guerrisonStatusPlayer1()
+    }
+    
 }

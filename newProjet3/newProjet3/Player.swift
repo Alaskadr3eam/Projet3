@@ -68,7 +68,7 @@ class Player: Character {
             print("Classe personnage :"
                 + "\n1.Fighter          2.Mage          3.Colosse          4.Nain")
             choiceCharac = readLine()!
-        } while choiceCharac != "1" && choiceCharac != "2" && choiceCharac != "3"
+        } while choiceCharac != "1" && choiceCharac != "2" && choiceCharac != "3" && choiceCharac != "4"
         
         var type1: CharacterType!
         switch choiceCharac {
@@ -193,27 +193,36 @@ class Player: Character {
     }
 // function for the choice of the mage between attack(mental) or care
     func choiceMagusAttack(teamA: Team, teamD: Team) {
-        print("======================================")
-        print("Qu'elle magie voulez vous utiliser ? "
-            + "\n1.Soin                 2.La peur."
-            + "\n====================================")
-        let choice1 = readLine()
+        var choice1: String
+        repeat {
+            print("======================================")
+            print("Qu'elle magie voulez vous utiliser ? "
+                + "\n1.Soin                 2.La peur."
+                + "\n====================================")
+            choice1 = readLine()!
+        } while choice1 != "1" && choice1 != "2"
+        
         switch choice1 {
         case "1":
             self.magusChoiceCare(team: teamA)
         case "2":
             let playerScared = teamD.chooseCharDefence()
             self.affraid(player: playerScared)
-        default: break
+        default: print("pas compris")
+        self.choiceMagusAttack(teamA: teamA, teamD: teamD)
         }
     }
 // funcion for the choice of mage care between life or status
     func magusChoiceCare(team: Team) {
-        print("====================")
-        print("Voulez vous soigner ? (si vous avez une arme legendaire, celle ci soigne la vie et le status en meme temps)"
-        + "\n1.Vie       2.Status"
-        + "\n=======================")
-        let choice = readLine()!
+        var choice: String
+        repeat{
+            print("====================")
+            print("Voulez vous soigner ? (si vous avez une arme legendaire, celle ci soigne la vie et le status en meme temps)"
+                + "\n1.Vie       2.Status"
+                + "\n=======================")
+            choice = readLine()!
+        }while choice != "1" && choice != "2"
+        
         switch choice {
         case "1" :
             let charToHeal = team.chooseCharToHeal()
@@ -222,6 +231,24 @@ class Player: Character {
             let charToStatus = team.chooseCharToHeal()
             self.careStatus(player: charToStatus)
         default: print("Pas compris")
+        }
+    }
+    
+    func guerrisonStatus() {
+        if counter%2 == 0 {
+            self.status = self.status == "Peur" ? "Normal" : "Normal"
+        }
+    }
+  /*  func guerrisonStatusPlayer() {
+        
+        self.status = counter%3 == 0 && self.status == "Peur" ? "Normal" : self.status = self.status
+        
+    }*/
+    
+    func guerrisonStatusPlayer1() {
+        
+        if (counter%3 == 0 && self.status == "PEUR") {
+            self.status = "Normal"
         }
     }
 }

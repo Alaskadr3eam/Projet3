@@ -11,6 +11,7 @@ import Foundation
 var team1 = Team()
 var team2 = Team()
 var counter = 0
+var counterStatus = 0
 
 Game.startGame()
 

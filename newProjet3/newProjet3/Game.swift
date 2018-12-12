@@ -11,7 +11,6 @@ import Foundation
 class Game {
     // funcion startGame for launch the game in the main
     static func startGame() {
-        //var choice: String
         print("Bonjour")
        
         Game.choiceGame()
@@ -63,6 +62,7 @@ class Game {
     }
 // function for deroulement game
     static func teamPlay(_ teamA: Team, teamD: Team) {
+        
         let attacker = teamA.chooseCharAttack()
         attacker.appiritionChest()
         if attacker.type == .Magus {
@@ -71,6 +71,9 @@ class Game {
             let attacked = teamD.chooseCharDefence()
             attacker.attack(player: attacked)
         }
+       
+        
+        
     }
     
 // func winner
@@ -89,15 +92,25 @@ static func gameWinner() {
     }
 // func for the game, defense-attack phase
 static func playGame() -> Int {
-    var counter = 0 // counter to find out how much lap the winning team has won
+   // var counter = 0 // counter to find out how much lap the winning team has won
+    var counterStatus = 0
         repeat{
             
             Game.teamPlay(team1,teamD: team2)
+            counterStatus += 1
             if team2.isDead() != 0 {
+                
                 Game.teamPlay(team2, teamD: team1)
-              
+                counterStatus += 1
+                
             }
             counter += 1
+            
+            print("\(counterStatus)")
+            print("\(counter)")
+            team1.guerrissonStatusPlayer()
+            team2.guerrissonStatusPlayer()
+            
         } while team1.isDead() != 0 && team2.isDead() != 0
     return counter
     }

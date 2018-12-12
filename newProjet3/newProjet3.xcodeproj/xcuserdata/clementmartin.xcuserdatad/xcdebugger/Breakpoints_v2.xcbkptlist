@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "newProjet3/Team.swift"
-            timestampString = "565798165.424143"
+            filePath = "newProjet3/Player.swift"
+            timestampString = "566303754.475047"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "choiceCharacA()"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "guerrisonStatusPlayer1()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
