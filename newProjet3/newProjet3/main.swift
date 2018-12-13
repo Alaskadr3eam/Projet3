@@ -15,4 +15,4 @@ var counterStatus = 0
 
 Game.startGame()
 
-//print(team1.player1.type)
+

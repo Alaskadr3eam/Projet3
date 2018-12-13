@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Hammer: Weapon {
+final class Hammer: Weapon {
     init() {
         super.init(dp: 5)
     }

@@ -8,14 +8,14 @@
 
 import Foundation
 
-class Player: Character {
+final class Player {
     var name = ""           //name player
     var type: CharacterType // type player(mage, nain, figter ...)
     var weapon: Weapon      // weapon type associed on the player type
     var life: Int           // life associed on the player type
-    var statut = "Normal"   // mental state of the player
-    static var myCharacName = [String]()
-
+    var statut: Statut = .Normal   // mental state of the player
+    static var myCharacName = [String]() // array for check player name is unique
+    
     init(type: CharacterType) {
         
         self.type = type
@@ -36,8 +36,8 @@ class Player: Character {
             
         }
     }
-// chek if name player is unique
-    func uniqueName() -> String {
+    // chek if name player is unique
+    private func uniqueName() -> String {
         let unique = false
         repeat{
             if let name = readLine() {
@@ -49,8 +49,8 @@ class Player: Character {
             }
         } while !unique
     }
-// chek if name player is unique
-    func checkUniqueName(_ name: String) -> Bool {
+    // chek if name player is unique
+    private func checkUniqueName(_ name: String) -> Bool {
         for character in Player.myCharacName {
             if(name == character) {
                 print("Le nom existe deja")
@@ -60,7 +60,7 @@ class Player: Character {
         Player.myCharacName.append(name)
         return true
     }
-// creation player, and choice type characters
+    // creation player, and choice type characters
     static func createPlayer() -> Player {
         var choiceCharac: String
         repeat {
@@ -88,111 +88,80 @@ class Player: Character {
         return player
     }
     func description() {
-     if self.life == 0 {
-     print("Ce personnage est MORT.")
-     } else if self.type == .Magus{
-        print("\(self.name) de type \(self.type) à \(self.life) de vie, un pouvoir de soin de \(self.weapon.dp) et un pouvoir mental qui est la PEUR. \(self.statut)")
-     } else {
-        print("\(self.name) de type \(self.type) à \(self.life) de vie et fait \(self.weapon.dp) de dégat. \(self.statut)")
-     }
+        if self.life == 0 {
+            print("Ce personnage est MORT.")
+        } else if self.type == .Magus{
+            print("\(self.name) de type \(self.type) à \(self.life) de vie, un pouvoir de soin de \(self.weapon.dp) et un pouvoir mental qui est la PEUR. \(self.statut)")
+        } else {
+            print("\(self.name) de type \(self.type) à \(self.life) de vie et fait \(self.weapon.dp) de dégat. \(self.statut)")
+        }
     }
-// function receive degat
-    func receive(degat: Int) {
+    // function receive degat
+    private func receive(degat: Int) {
         self.life = self.life - degat
         if self.life < 0 {
             self.life = 0
         }
     }
-// attack, player attack player, and when life<0 then player is DEAD
-    func attack(player: Player) {
+    // attack, player attack player, and when life<0 then player is DEAD
+   func attack(player: Player) {
         player.receive(degat: self.weapon.dp)
         print("")
         print("====================================================================================="
             + "\n\(self.name) de type \(self.type) attaque \(player.name) de type \(player.type) : "
             + "\n\(player.name) de type \(player.type) a maintenant \(player.life) de vie."
             + "\n===================================================================================")
-        }
-// function to check if player is dead
-    func isDead() -> Bool {
-         print("Le personnage \(self.name) de type \(self.type) est mort")
+    }
+    // function to check if player is dead
+    private func isDead() -> Bool {
+        print("Le personnage \(self.name) de type \(self.type) est mort")
         return self.life == 0
     }
-// func receive care
-    func receiveCare(care: Int) {
+    // func receive care
+    private func receiveCare(care: Int) {
         self.life = self.life + care
     }
-// func player receive care
+    // func player receive care
     func care(player: Player) {
         if self.weapon.dp == 10 {
-        player.receiveCare(care: self.weapon.dp)
-        print("")
+            player.receiveCare(care: self.weapon.dp)
+            print("")
             print("===================================================================================="
-            + "\n\(self.name) de type mage soigne \(player.name) de type \(player.type) :"
-            + "\n\(player.name) de type \(player.type) a été soigné, il a maintenant \(player.life) de vie."
-            + "\n======================================================================================")
+                + "\n\(self.name) de type mage soigne \(player.name) de type \(player.type) :"
+                + "\n\(player.name) de type \(player.type) a été soigné, il a maintenant \(player.life) de vie."
+                + "\n======================================================================================")
         } else {
             player.receiveCare(care: self.weapon.dp)
-            player.statut = "Normal"
+            player.statut = .Normal
             print("")
             print("================================")
             print("Le personnage \(player.name) de type \(player.type) a été soigné, il a maintenant \(player.life) de vie et son état est \(player.statut).")
             print("================================")
         }
     }
-// function care of status
+    // function care of status
     func careStatus(player: Player) {
-        player.statut = "Normal"
+        player.statut = .Normal
         print("")
         print("================================")
-        print("Le personnage \(player.name) de type \(player.type) a été soigné, son status est maintenant \(player.statut).")
+        print("Le personnage \(player.name) de type \(player.type) a été soigné, son statut est maintenant \(player.statut).")
         print("================================")
     }
-// function scared, player scared not playing
-    func isScared(affraid: String) {
-        self.statut = "PEUR"
+    // function scared, player scared not playing
+    private func isScared(affraid: Statut) {
+        self.statut = .Peur
     }
-//function affraid player
+    //function affraid player
     func affraid(player: Player) {
         player.isScared(affraid: self.statut)
         print("")
         print("=======================================================")
         print("Le mage \(self.name) effraie le \(player.type) \(player.name),"
-            + "\n\(player.name) a changé de status, maintenant il est paralysé par la \(player.statut)"
+            + "\n\(player.name) a changé de statut, maintenant il est paralysé par la \(player.statut)"
             + "\n=============================================================================")
     }
-// function of the chest that one opens or not, and different for the mage and the combatants
-    func chest() {
-        print("Un coffre apparait, voulez vous l'ouvrir ?"
-        + "\n1. Oui                     2.Non")
-        let choice = readLine()
-        switch choice {
-        case "1":
-            print("====================================================================")
-            print("Vous trouvez une arme légendaire dans ce coffre, votre personnage s'en équipe")
-            self.weapon = self.type == .Magus ? LegendarySceptre() : LegendaryWeapon()
-            if self.type == .Magus {
-            print("\(self.name) à maintenant une arme qui à \(self.weapon.dp) de soin")
-            } else {
-                print("\(self.name) à maintenant une arme qui à \(self.weapon.dp) de dégat")
-            }
-            print("======================================================================")
-        case "2":
-            print("tant pis pour vous !")
-        default: break
-        }
-    }
-//function for the appearance of the safe randomly
-    func appiritionChest() {
-        let choice = Int.random(in: 1...5)
-        switch choice {
-        case 1 :
-            self.chest()
-        default : break
-        }
-        
-    }
-// function for the choice of the mage between attack(mental) or care
-    func choiceMagusAttack(teamA: Team, teamD: Team) {
+    // function for the choice of the mage between attack(mental) or care
+    func ifMagusAttack(_ teamA: Team,_ teamD: Team) {
         var choice1: String
         repeat {
             print("======================================")
@@ -204,21 +173,21 @@ class Player: Character {
         
         switch choice1 {
         case "1":
-            self.magusChoiceCare(team: teamA)
+            self.magusChooseHisMagic(teamA)
         case "2":
-            let playerScared = teamD.chooseCharDefence()
+            let playerScared = teamD.choosePlayerForDefence()
             self.affraid(player: playerScared)
         default: print("pas compris")
-        self.choiceMagusAttack(teamA: teamA, teamD: teamD)
+        self.ifMagusAttack(teamA,teamD)
         }
     }
-// funcion for the choice of mage care between life or status
-    func magusChoiceCare(team: Team) {
+    // funcion for the choice of mage care between life or status
+    func magusChooseHisMagic(_ team: Team) {
         var choice: String
         repeat{
             print("====================")
-            print("Voulez vous soigner ? (si vous avez une arme legendaire, celle ci soigne la vie et le status en meme temps)"
-                + "\n1.Vie       2.Status"
+            print("Voulez vous soigner ? (si vous avez une arme legendaire, celle ci soigne la vie et le statut en meme temps)"
+                + "\n1.Vie       2.Statut"
                 + "\n=======================")
             choice = readLine()!
         }while choice != "1" && choice != "2"
@@ -235,8 +204,8 @@ class Player: Character {
     }
     
     func guerrisonStatusPlayer() {
-        if (counter%3 == 0 && self.statut == "PEUR") {
-            self.statut = "Normal"
+        if (counter%3 == 0 && self.statut == .Peur) {
+            self.statut = .Normal
         }
     }
 }

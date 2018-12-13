@@ -12,13 +12,13 @@ class Game {
     // funcion startGame for launch the game in the main
     static func startGame() {
         print("Bonjour")
-       
+        
         Game.choiceGame()
         
         
     }
     
-    static func menuGame()->String {
+    private static func menuGame()->String {
         var choice = ""
         print(" Voulez vous commencer une partie d'EpicGame ?"
             + "\n1. Oui                         2.Non               3.Règle du jeu")
@@ -30,7 +30,7 @@ class Game {
         return choice
     }
     
-    static func choiceGame() {
+    private static func choiceGame() {
         let choice = Game.menuGame()
         switch choice {
         case "1":
@@ -44,8 +44,7 @@ class Game {
             team1.descriptionTeam()
             team2.descriptionTeam()
             
-            //  Game.teamPlay( team1, teamD: team2)
-            // Game.teamPlay( team2, teamD: team1)
+          
             counter = Game.playGame()
             
             
@@ -54,33 +53,33 @@ class Game {
         case "2":
             print("Au revoir, à bientot")
         case "3":
-            print("C'est un jeu de match à mort. 2 équipes composé de 3 personnages s'affrontent jusqu'a ce que tout les personnages d'une des deux équipes n'ai plus de vie."
+            print("C'est un jeu de match à mort. 2 équipes composées de 3 personnages s'affrontent jusqu'à ce que tout les personnages d'une des deux équipes n'ai plus de vie."
                 + "\nDes armes légendaires apparaissent dans le jeu, attenion, toute fois ça peut etre à double tranchant.")
             Game.choiceGame()
         default:
             print("Je ne comprends pas !")
         }
     }
-// function for deroulement game
-    static func teamPlay(_ teamA: Team, teamD: Team) {
+    // function for deroulement game
+    private static func teamPlay(_ teamA: Team,_ teamD: Team) {
         
-        let attacker = teamA.chooseCharAttack()
-        attacker.appiritionChest()
+        let attacker = teamA.choosePlayerForAttack()
+        Game.appiritionChest(attacker)
         if attacker.type == .Magus {
-            attacker.choiceMagusAttack(teamA: teamA, teamD: teamD)
+            attacker.ifMagusAttack(teamA, teamD)
         } else {
-            let attacked = teamD.chooseCharDefence()
+            let attacked = teamD.choosePlayerForDefence()
             attacker.attack(player: attacked)
         }
-       
+        
         
         
     }
     
-// func winner
-static func gameWinner() {
+    // func winner
+    private static func gameWinner() {
         var winnerName: String
-        if team1.isDead() > 0 {
+        if !team1.isDead() {
             winnerName = team1.nameTeam
         } else {
             winnerName = team2.nameTeam
@@ -91,32 +90,61 @@ static func gameWinner() {
             + "\nVous avez gagner en \(counter) attaques"
             + "\n=============================================")
     }
-// func for the game, defense-attack phase
-static func playGame() -> Int {
-   // var counter = 0 // counter to find out how much lap the winning team has won
-    var counterStatus = 0
+    // func for the game, defense-attack phase
+    private static func playGame() -> Int {
+        // var counter = 0 // counter to find out how much lap the winning team has won
+        var counterStatus = 0
         repeat{
             
-            Game.teamPlay(team1,teamD: team2)
+            Game.teamPlay(team1,team2)
             counterStatus += 1
-            if team2.isDead() != 0 {
+            if !team2.isDead() {
                 
-                Game.teamPlay(team2, teamD: team1)
+                Game.teamPlay(team2,team1)
                 counterStatus += 1
                 
             }
             counter += 1
             
-            print("\(counterStatus)")
-            print("\(counter)")
+            
             team1.guerrissonStatusPlayer()
             team2.guerrissonStatusPlayer()
             
-        } while team1.isDead() != 0 && team2.isDead() != 0
-    return counter
+        } while !team1.isDead() && !team2.isDead()
+        return counter
+    }
+     // function of the chest that one opens or not, and different for the mage and the combatants
+   private static func chest(player: Player) {
+        print("Un coffre apparait, voulez vous l'ouvrir ?"
+            + "\n1. Oui                     2.Non")
+        let choice = readLine()
+        switch choice {
+        case "1":
+            print("====================================================================")
+            print("Vous trouvez une arme légendaire dans ce coffre, votre personnage s'en équipe")
+            player.weapon = player.type == .Magus ? LegendarySceptre() : LegendaryWeapon()
+            if player.type == .Magus {
+                print("\(player.name) à maintenant une arme qui à \(player.weapon.dp) de soin")
+            } else {
+                print("\(player.name) à maintenant une arme qui à \(player.weapon.dp) de dégat")
+            }
+            print("======================================================================")
+        case "2":
+            print("tant pis pour vous !")
+        default: break
+        }
+    }
+    //function for the appearance of the safe randomly
+   private static func appiritionChest(_ player: Player) {
+        let choice = Int.random(in: 1...5)
+        switch choice {
+        case 1 :
+            self.chest(player: player)
+        default : break
+        }
+        
     }
     
-   
 }
 
 

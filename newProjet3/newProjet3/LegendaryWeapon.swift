@@ -8,19 +8,18 @@
 
 import Foundation
 
-class LegendaryWeapon: Weapon {
+final class LegendaryWeapon: Weapon {
     
-        init() {
-           
-            super.init(dp: Int(arc4random_uniform(UInt32(100 - 20)) + UInt32(20)))
+    init() {
+        
+        super.init(dp: Int(arc4random_uniform(UInt32(100 - 20)) + UInt32(20)))
     }
     
- 
+    
     
 }
     
-    //l'arme legendaire permet de porter des coup critique impressionnant, amenant la mort du personnage adversaire en un seul coup. Par contre le coup est aléatoire.
-    
+    // the legendary weapon allows you to make an impressive critical hit, bringing the death of the opposing character in one shot. By cons the shot is random.
 
 
 

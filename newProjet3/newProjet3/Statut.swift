@@ -8,9 +8,6 @@
 
 import Foundation
 
-class Character {
-    
-    
-    
-    
+enum Statut {
+    case Normal, Peur
 }

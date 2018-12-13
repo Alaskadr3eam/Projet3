@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Ax: Weapon {
+final class Ax: Weapon {
     init() {
         super.init(dp: 25)
     }

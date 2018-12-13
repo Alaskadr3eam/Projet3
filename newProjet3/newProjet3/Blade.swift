@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Blade: Weapon {
+final class Blade: Weapon {
     init() {
         super.init(dp: 10)
     }

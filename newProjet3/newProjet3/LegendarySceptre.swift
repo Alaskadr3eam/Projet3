@@ -8,11 +8,11 @@
 
 import Foundation
 
-class LegendarySceptre: Weapon { // legendary Weapon that appears randomly with the vault and whose stats are random too
+final class LegendarySceptre: Weapon { // legendary Weapon that appears randomly with the vault and whose stats are random too
     
     init() {
-            super.init(dp: Int.random(in: 0...100)) // choice of the care bonus randomly between 10 and 100
-        }
+        super.init(dp: Int.random(in: 0...100)) // choice of the care bonus randomly between 10 and 100
+    }
     
 }
 

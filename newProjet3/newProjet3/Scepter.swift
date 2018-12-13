@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Scepter: Weapon {
+final class Scepter: Weapon {
     init() {
         super.init(dp: 10)
     }

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		31606B2721B014C000B10BC3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31606B2621B014C000B10BC3 /* main.swift */; };
 		31606B2E21B014D400B10BC3 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31606B2D21B014D400B10BC3 /* Team.swift */; };
-		31606B3021B014E000B10BC3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31606B2F21B014E000B10BC3 /* Character.swift */; };
+		31606B3021B014E000B10BC3 /* Statut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31606B2F21B014E000B10BC3 /* Statut.swift */; };
 		31606B3221B014FF00B10BC3 /* CharacterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31606B3121B014FF00B10BC3 /* CharacterType.swift */; };
 		31606B3421B0150C00B10BC3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31606B3321B0150C00B10BC3 /* Player.swift */; };
 		31606B3621B0152100B10BC3 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31606B3521B0152100B10BC3 /* Weapon.swift */; };
@@ -38,7 +38,7 @@
 		31606B2321B014C000B10BC3 /* newProjet3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = newProjet3; sourceTree = BUILT_PRODUCTS_DIR; };
 		31606B2621B014C000B10BC3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		31606B2D21B014D400B10BC3 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
-		31606B2F21B014E000B10BC3 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		31606B2F21B014E000B10BC3 /* Statut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statut.swift; sourceTree = "<group>"; };
 		31606B3121B014FF00B10BC3 /* CharacterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterType.swift; sourceTree = "<group>"; };
 		31606B3321B0150C00B10BC3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		31606B3521B0152100B10BC3 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 				31606B2621B014C000B10BC3 /* main.swift */,
 				31606B3F21B0256900B10BC3 /* Game.swift */,
 				31606B2D21B014D400B10BC3 /* Team.swift */,
-				31606B2F21B014E000B10BC3 /* Character.swift */,
+				31606B2F21B014E000B10BC3 /* Statut.swift */,
 				31606B3121B014FF00B10BC3 /* CharacterType.swift */,
 				31606B3321B0150C00B10BC3 /* Player.swift */,
 				31606B4321B66D1500B10BC3 /* LegendarySceptre.swift */,
@@ -160,7 +160,7 @@
 				31606B3A21B0153100B10BC3 /* Hammer.swift in Sources */,
 				31606B2E21B014D400B10BC3 /* Team.swift in Sources */,
 				31606B3221B014FF00B10BC3 /* CharacterType.swift in Sources */,
-				31606B3021B014E000B10BC3 /* Character.swift in Sources */,
+				31606B3021B014E000B10BC3 /* Statut.swift in Sources */,
 				31606B4021B0256900B10BC3 /* Game.swift in Sources */,
 				31606B3421B0150C00B10BC3 /* Player.swift in Sources */,
 				31606B2721B014C000B10BC3 /* main.swift in Sources */,
