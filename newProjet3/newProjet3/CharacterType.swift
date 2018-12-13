@@ -9,5 +9,5 @@
 import Foundation
 
 enum CharacterType {
-    case Fighter, Magus, Giant, Dwarf
+    case fighter, magus, giant, dwarf
 }

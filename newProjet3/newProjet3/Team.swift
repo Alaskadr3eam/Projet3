@@ -121,14 +121,14 @@ class Team {
         repeat {
             self.descriptionTeam()
             player = self.choicePlayerInTeam()
-            if player.life > 0 && player.statut == .Normal  {
+            if player.life > 0 && player.statut == .normal  {
                 print("Vous avez choisi \(player.name) de type \(player.type) qui a \(player.life) de vie")
-            } else if player.statut == .Peur {
+            } else if player.statut == .peur {
                 print("Vous ne pouvez pas sélectionner ce personage car il est effrayé")
             } else {
                 print("Choix impossible")
             }
-        } while player.life == 0 || player.statut == .Peur
+        } while player.life == 0 || player.statut == .peur
         return player
     }
     

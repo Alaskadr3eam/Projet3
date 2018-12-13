@@ -9,5 +9,5 @@
 import Foundation
 
 enum Statut {
-    case Normal, Peur
+    case normal, peur
 }

@@ -13,7 +13,7 @@ final class Player {
     var type: CharacterType // type player(mage, nain, figter ...)
     var weapon: Weapon      // weapon type associed on the player type
     var life: Int           // life associed on the player type
-    var statut: Statut = .Normal   // mental state of the player
+    var statut: Statut = .normal   // mental state of the player
     static var myCharacName = [String]() // array for check player name is unique
     
     init(type: CharacterType) {
@@ -21,16 +21,16 @@ final class Player {
         self.type = type
         //switch to assign a type to the character
         switch self.type {
-        case .Magus:
+        case .magus:
             self.weapon = Scepter()
             self.life = 90
-        case .Fighter:
+        case .fighter:
             self.weapon = Blade()
             self.life = 100
-        case .Giant:
+        case .giant:
             self.weapon = Hammer()
             self.life = 130
-        case .Dwarf:
+        case .dwarf:
             self.weapon = Ax()
             self.life = 70
             
@@ -73,13 +73,13 @@ final class Player {
         var type1: CharacterType!
         switch choiceCharac {
         case "1":
-            type1 = .Fighter
+            type1 = .fighter
         case "2":
-            type1 = .Magus
+            type1 = .magus
         case "3":
-            type1 = .Giant
+            type1 = .giant
         case "4":
-            type1 = .Dwarf
+            type1 = .dwarf
         default: break
         }
         let player = Player(type: type1)
@@ -90,7 +90,7 @@ final class Player {
     func description() {
         if self.life == 0 {
             print("Ce personnage est MORT.")
-        } else if self.type == .Magus{
+        } else if self.type == .magus{
             print("\(self.name) de type \(self.type) à \(self.life) de vie, un pouvoir de soin de \(self.weapon.dp) et un pouvoir mental qui est la PEUR. \(self.statut)")
         } else {
             print("\(self.name) de type \(self.type) à \(self.life) de vie et fait \(self.weapon.dp) de dégat. \(self.statut)")
@@ -132,7 +132,7 @@ final class Player {
                 + "\n======================================================================================")
         } else {
             player.receiveCare(care: self.weapon.dp)
-            player.statut = .Normal
+            player.statut = .normal
             print("")
             print("================================")
             print("Le personnage \(player.name) de type \(player.type) a été soigné, il a maintenant \(player.life) de vie et son état est \(player.statut).")
@@ -141,7 +141,7 @@ final class Player {
     }
     // function care of status
     func careStatus(player: Player) {
-        player.statut = .Normal
+        player.statut = .normal
         print("")
         print("================================")
         print("Le personnage \(player.name) de type \(player.type) a été soigné, son statut est maintenant \(player.statut).")
@@ -149,7 +149,7 @@ final class Player {
     }
     // function scared, player scared not playing
     private func isScared(affraid: Statut) {
-        self.statut = .Peur
+        self.statut = .peur
     }
     //function affraid player
     func affraid(player: Player) {
@@ -204,8 +204,8 @@ final class Player {
     }
     
     func guerrisonStatusPlayer() {
-        if (counter%3 == 0 && self.statut == .Peur) {
-            self.statut = .Normal
+        if (counter%3 == 0 && self.statut == .peur) {
+            self.statut = .normal
         }
     }
 }

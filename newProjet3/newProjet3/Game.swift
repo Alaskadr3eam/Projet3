@@ -65,7 +65,7 @@ class Game {
         
         let attacker = teamA.choosePlayerForAttack()
         Game.appiritionChest(attacker)
-        if attacker.type == .Magus {
+        if attacker.type == .magus {
             attacker.ifMagusAttack(teamA, teamD)
         } else {
             let attacked = teamD.choosePlayerForDefence()
@@ -122,8 +122,8 @@ class Game {
         case "1":
             print("====================================================================")
             print("Vous trouvez une arme légendaire dans ce coffre, votre personnage s'en équipe")
-            player.weapon = player.type == .Magus ? LegendarySceptre() : LegendaryWeapon()
-            if player.type == .Magus {
+            player.weapon = player.type == .magus ? LegendarySceptre() : LegendaryWeapon()
+            if player.type == .magus {
                 print("\(player.name) à maintenant une arme qui à \(player.weapon.dp) de soin")
             } else {
                 print("\(player.name) à maintenant une arme qui à \(player.weapon.dp) de dégat")
