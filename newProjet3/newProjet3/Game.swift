@@ -92,21 +92,14 @@ class Game {
     }
     // func for the game, defense-attack phase
     private static func playGame() -> Int {
-        // var counter = 0 // counter to find out how much lap the winning team has won
-        var counterStatus = 0
+    // counter to find out how much lap the winning team has won
+        
         repeat{
-            
             Game.teamPlay(team1,team2)
-            counterStatus += 1
             if !team2.isDead() {
-                
                 Game.teamPlay(team2,team1)
-                counterStatus += 1
-                
             }
             counter += 1
-            
-            
             team1.guerrissonStatusPlayer()
             team2.guerrissonStatusPlayer()
             
@@ -115,8 +108,10 @@ class Game {
     }
      // function of the chest that one opens or not, and different for the mage and the combatants
    private static func chest(player: Player) {
-        print("Un coffre apparait, voulez vous l'ouvrir ?"
-            + "\n1. Oui                     2.Non")
+        print( "============================================"
+            + "\nUn coffre apparait, voulez vous l'ouvrir ?"
+            + "\n1. Oui                     2.Non"
+            + "\n===========================================")
         let choice = readLine()
         switch choice {
         case "1":
@@ -142,7 +137,6 @@ class Game {
             self.chest(player: player)
         default : break
         }
-        
     }
     
 }

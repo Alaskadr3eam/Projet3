@@ -202,7 +202,7 @@ final class Player {
         default: print("Pas compris")
         }
     }
-    
+    // function to heal the status automatically every 3 turns
     func guerrisonStatusPlayer() {
         if (counter%3 == 0 && self.statut == .peur) {
             self.statut = .normal
